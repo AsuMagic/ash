@@ -5,14 +5,14 @@
 #include <vector>
 #include "constexpr_string.hpp"
 
-#ifdef __unix__
-constexpr bool stdout_ansi = true;
-#else
-constexpr bool stdout_ansi = false;
-#endif
-
 namespace ash
 {
+	#ifdef __unix__
+	constexpr bool stdout_ansi = true;
+	#else
+	constexpr bool stdout_ansi = false;
+	#endif
+
 	enum class LogColor
 	{
 		Default = 39,
