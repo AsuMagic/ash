@@ -4,6 +4,7 @@
 #include <GL/glew.h>
 #include <vector>
 #include "vao.hpp"
+#include "glresource.hpp"
 
 namespace ash
 {
@@ -16,15 +17,18 @@ namespace ash
 
 	class VAO;
 
+	struct GLVBOManager
+	{
+		static void alloc(GLuint& id);
+		static void free(GLuint& id);
+	};
+
 	class VBO
 	{
 		VBOUpdateFrequency _update_freq = VBOUpdateFrequency::Static;
-		GLuint _buffer_id;
 
 		std::vector<float> _values;
 		std::size_t _buffer_size = 0;
-
-		bool _owns_buffer = false;
 
 		void buffer_realloc();
 		void buffer_update_range(const std::size_t offset, const std::size_t size);
@@ -41,17 +45,7 @@ namespace ash
 		}
 
 	public:
-		// Default constructor. Constructs a single buffer on its own and manages it.
-		VBO();
-
-		// Constructor which takes a buffer_id to bind to. Any data within this buffer will be ignored, the VBO handles the vertices in its own way.
-		// It is recommended to use this constructor when needing to generate multiple buffers (with glGenBuffers(n, &ids)).
-		VBO(const GLuint buffer_id);
-
-		~VBO();
-
-		// Move constructor
-		VBO(VBO&& other);
+		GLResource<GLVBOManager> id;
 
 		// Bind the VBO to GL_ARRAY_BUFFER to use by OpenGL functions
 		void bind();
@@ -66,7 +60,7 @@ namespace ash
 		void reserve(const std::size_t reserved);
 
 		// Push floats
-		template<typename... Args>
+		template<class... Args>
 		void push(Args... rest)
 		{
 			std::size_t old_size = _values.size();
@@ -84,9 +78,6 @@ namespace ash
 
 		// Bound-checked access
 		float& at(const std::size_t at);
-
-		// Returns the VBO id
-		GLuint id() const;
 	};
 }
 

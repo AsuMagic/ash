@@ -3,6 +3,16 @@
 
 namespace ash
 {
+	void GLVBOManager::alloc(GLuint& id)
+	{
+		glGenBuffers(1, &id);
+	}
+
+	void GLVBOManager::free(GLuint& id)
+	{
+		glDeleteBuffers(1, &id);
+	}
+
 	void VBO::buffer_realloc()
 	{
 		bind();
@@ -30,32 +40,9 @@ namespace ash
 		}
 	}
 
-	VBO::VBO() :
-		_owns_buffer{true}
-	{
-		// Generate one buffer for the VBO.
-		glGenBuffers(1, &_buffer_id);
-	}
-
-	VBO::VBO(const GLuint buffer_id) :
-        _buffer_id{buffer_id}
-	{}
-	
-	VBO::~VBO()
-	{
-		if (_owns_buffer)
-			glDeleteBuffers(1, &_buffer_id);
-	}
-
-	VBO::VBO(VBO&& other) :
-		_buffer_id{other._buffer_id},
-		_values{std::move(other._values)},
-		_buffer_size{other._buffer_size}
-	{}
-
 	void VBO::bind()
 	{
-		glBindBuffer(GL_ARRAY_BUFFER, _buffer_id);
+		glBindBuffer(GL_ARRAY_BUFFER, id);
 	}
 
 	void VBO::unbind()
@@ -87,10 +74,5 @@ namespace ash
 	float& VBO::at(const std::size_t at)
 	{
 		return _values.at(at);
-	}
-
-	GLuint VBO::id() const
-	{
-		return _buffer_id;
 	}
 }
