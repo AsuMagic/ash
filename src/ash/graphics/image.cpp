@@ -1,4 +1,5 @@
 #include <ash/graphics/image.hpp>
+#include <cstring> // memcpy
 
 namespace ash
 {
@@ -19,13 +20,12 @@ namespace ash
 
 	Image& Image::resize(const std::size_t new_width, const std::size_t new_height)
 	{
-		// TODO not implemented
-		std::terminate();
+		Image resized(new_width, new_height);
+		
+		for (std::size_t y = 0; y < std::min(_height, resized._height); ++y)
+			std::memcpy(&resized._image[y * resized._width], &_image[y * _height], std::min(_width, resized._width));
 
-		_width = new_width;
-		_height = new_height;
-
-		return *this;
+		return (*this = std::move(resized));
 	}
 
 	std::size_t Image::width() const
