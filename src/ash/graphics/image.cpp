@@ -23,7 +23,7 @@ namespace ash
 		Image resized(new_width, new_height);
 		
 		for (std::size_t y = 0; y < std::min(_height, resized._height); ++y)
-			std::memcpy(&resized._image[y * resized._width], &_image[y * _height], std::min(_width, resized._width));
+			std::memcpy(&resized._image[y * resized._width], &_image[y * _height], std::min(_width, resized._width) * sizeof(ColorU));
 
 		return (*this = std::move(resized));
 	}
