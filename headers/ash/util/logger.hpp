@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <vector>
-#include "constexpr_string.hpp"
+#include <ash/util/constexpr_string.hpp>
 
 namespace ash
 {
@@ -80,6 +80,6 @@ namespace ash
 	extern Logger cdebug, cengine, cgraphics, caudio, cgame;
 }
 
-#include "logger.inl"
+#include <ash/util/logger.hpp>
 
 #endif // LOGGER_HPP

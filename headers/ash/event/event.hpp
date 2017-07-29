@@ -89,6 +89,6 @@ namespace ash
 	};
 }
 
-#include "event.inl"
+#include <ash/event/event.inl>
 
 #endif // EVENT_HPP

@@ -2,8 +2,8 @@
 #define ASH_MOUSE_HPP
 
 #include <SDL2/SDL.h>
-#include "../util/vector.hpp"
-#include "../window/window.hpp"
+#include <ash/util/vector.hpp>
+#include <ash/window/window.hpp>
 
 namespace ash
 {

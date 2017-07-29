@@ -24,6 +24,6 @@ namespace ash
 	};
 }
 
-#include "glresource.inl"
+#include <ash/graphics/glresource.inl>
 
 #endif // GLRESOURCE_HPP

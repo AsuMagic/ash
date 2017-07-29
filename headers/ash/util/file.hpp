@@ -5,7 +5,7 @@
 
 namespace ash
 {
-	std::string load_file(const std::string filename);
+	std::string load_file(const std::string& filename);
 }
 
 #endif // FILE_HPP

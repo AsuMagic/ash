@@ -2,7 +2,7 @@
 #define ASH_KEYBOARD_HPP
 
 #include <SDL2/SDL.h>
-#include "../window/window.hpp"
+#include <ash/window/window.hpp>
 
 namespace ash
 {

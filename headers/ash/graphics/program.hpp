@@ -4,9 +4,9 @@
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
 #include <vector>
-#include "shader.hpp"
 #include <iostream>
-#include "glresource.hpp"
+#include <ash/graphics/shader.hpp>
+#include <ash/graphics/glresource.hpp>
 
 namespace ash
 {

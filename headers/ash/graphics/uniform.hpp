@@ -1,8 +1,8 @@
 #ifndef ASH_UNIFORM_HPP
 #define ASH_UNIFORM_HPP
 
-#include "program.hpp"
-#include "../util/vector.hpp"
+#include <ash/graphics/program.hpp>
+#include <ash/util/vector.hpp>
 
 namespace ash
 {

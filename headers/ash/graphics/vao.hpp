@@ -2,9 +2,9 @@
 #define ASH_VAO_HPP
 
 #include <GL/glew.h>
-#include "vbo.hpp"
-#include "primitive.hpp"
-#include "glresource.hpp"
+#include <ash/graphics/vbo.hpp>
+#include <ash/graphics/primitive.hpp>
+#include <ash/graphics/glresource.hpp>
 
 namespace ash
 {

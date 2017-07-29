@@ -3,8 +3,8 @@
 
 #include <GL/glew.h>
 #include <vector>
-#include "vao.hpp"
-#include "glresource.hpp"
+#include <ash/graphics/vao.hpp>
+#include <ash/graphics/glresource.hpp>
 
 namespace ash
 {

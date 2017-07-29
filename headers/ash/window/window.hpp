@@ -4,7 +4,7 @@
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
 #include <string>
-#include "../graphics/color.hpp"
+#include <ash/graphics/color.hpp>
 
 namespace ash
 {

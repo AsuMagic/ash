@@ -34,6 +34,6 @@ namespace ash
 	using Vector2i = Vector2<int>;
 }
 
-#include "vector.inl"
+#include <ash/util/vector.inl>
 
 #endif // VECTOR_HPP

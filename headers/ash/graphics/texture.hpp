@@ -3,8 +3,8 @@
 
 #include <GL/glew.h>
 #include <vector>
-#include "image.hpp"
-#include "glresource.hpp"
+#include <ash/graphics/image.hpp>
+#include <ash/graphics/glresource.hpp>
 
 namespace ash
 {

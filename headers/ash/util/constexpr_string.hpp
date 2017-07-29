@@ -11,8 +11,8 @@ namespace ash
 		const std::size_t size;
 
 		template<std::size_t Size>
-		constexpr constexpr_string(const char (&str)[Size]) :
-			str{str},
+		constexpr constexpr_string(const char (&_str)[Size]) :
+			str{_str},
 			size{Size - 1} // Skip trailing '\0'
 		{}
 	};

@@ -4,7 +4,7 @@
 #include <vector>
 #include <cstdint>
 #include <cstddef>
-#include "color.hpp"
+#include <ash/graphics/color.hpp>
 
 namespace ash
 {

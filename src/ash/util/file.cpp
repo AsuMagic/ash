@@ -1,9 +1,10 @@
 #include <ash/util/file.hpp>
 #include <fstream>
+#include <ash/util/logger.hpp>
 
 namespace ash
 {
-	std::string load_file(const std::string filename)
+	std::string load_file(const std::string& filename)
 	{
 		std::ifstream in{filename, std::ios::in};
 		in.exceptions(std::ios::badbit | std::ios::failbit);

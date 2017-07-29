@@ -1,11 +1,11 @@
 #ifndef ASH_GLRESOURCE_INL
 #define ASH_GLRESOURCE_INL
 
-#include "glresource.hpp"
+#include <ash/graphics/glresource.hpp>
 
 #include <utility>
-#include "../util/debug.hpp"
-#include "../util/logger.hpp"
+#include <ash/util/debug.hpp>
+#include <ash/util/logger.hpp>
 
 namespace ash
 {

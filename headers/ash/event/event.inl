@@ -2,10 +2,10 @@
 #define ASH_EVENT_INL
 
 #include <ash/event/mouse.hpp>
-#include "keyboard.hpp"
-#include "system.hpp"
-#include "event.hpp"
-#include "../util/trycall.hpp"
+#include <ash/event/keyboard.hpp>
+#include <ash/event/system.hpp>
+#include <ash/event/event.hpp>
+#include <ash/util/trycall.hpp>
 
 namespace ash
 {
