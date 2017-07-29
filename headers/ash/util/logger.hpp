@@ -80,6 +80,6 @@ namespace ash
 	extern Logger cdebug, cengine, cgraphics, caudio, cgame;
 }
 
-#include <ash/util/logger.hpp>
+#include <ash/util/logger.inl>
 
 #endif // LOGGER_HPP
