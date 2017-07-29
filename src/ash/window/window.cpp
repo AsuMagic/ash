@@ -14,20 +14,20 @@ namespace ash
 		if (!pman.sdl_initialized)
 		{
 			cengine() << "Initializing engine";
-			sdl_assert(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK));
+			sdl_assert(SDL_Init(SDL_INIT_VIDEO));
 			pman.sdl_initialized = true;
 		}
 
 		cengine() << "Creating window";
-		_window = SDL_CreateWindow(window.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN/* | SDL_WINDOW_RESIZABLE*/);
+		_window = SDL_CreateWindow(window.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
 		SDL_SetWindowData(_window, "sh", this);
 		sdl_assert(_window);
 
 		sdl_assert(
-			// Select core OpenGL3.2
+			// Select core OpenGL4.5
 			SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE),
-			SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3),
-			SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3),
+			SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4),
+			SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5),
 
 			// Set the color depth
 			SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8),
