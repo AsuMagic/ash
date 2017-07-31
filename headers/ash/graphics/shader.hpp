@@ -1,7 +1,7 @@
 #ifndef ASH_SHADER_HPP
 #define ASH_SHADER_HPP
 
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include <string>
 #include <ash/graphics/glresource.hpp>
 

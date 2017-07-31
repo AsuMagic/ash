@@ -1,7 +1,7 @@
 #include <ash/window/window.hpp>
 
 #include <iostream>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 
 #include <ash/util/propertymanager.hpp>
 #include <ash/util/sdlassert.hpp>
@@ -46,10 +46,6 @@ namespace ash
 
 		// Create a context over the window
 		sdl_assert((_gl_context = SDL_GL_CreateContext(_window)));
-
-		// Initialize glew
-		glewExperimental = GL_TRUE;
-		glewInit();
 
 		GLint major, minor;
 		glGetIntegerv(GL_MAJOR_VERSION, &major);

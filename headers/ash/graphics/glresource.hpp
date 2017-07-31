@@ -1,7 +1,7 @@
 #ifndef ASH_GLRESOURCE_HPP
 #define ASH_GLRESOURCE_HPP
 
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 
 namespace ash
 {

@@ -2,7 +2,7 @@
 #define ASH_PROGRAM_HPP
 
 #include <SDL2/SDL.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include <vector>
 #include <iostream>
 #include <ash/graphics/shader.hpp>

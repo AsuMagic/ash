@@ -1,7 +1,7 @@
 #ifndef ASH_VBO_HPP
 #define ASH_VBO_HPP
 
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include <vector>
 #include <ash/graphics/vao.hpp>
 #include <ash/graphics/glresource.hpp>

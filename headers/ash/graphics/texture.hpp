@@ -1,7 +1,7 @@
 #ifndef ASH_TEXTURE_HPP
 #define ASH_TEXTURE_HPP
 
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include <vector>
 #include <ash/graphics/image.hpp>
 #include <ash/graphics/glresource.hpp>

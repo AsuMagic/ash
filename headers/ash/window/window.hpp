@@ -2,7 +2,7 @@
 #define WINDOW_HPP
 
 #include <SDL2/SDL.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include <string>
 #include <ash/graphics/color.hpp>
 

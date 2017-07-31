@@ -1,7 +1,7 @@
 #ifndef ASH_PRIMITIVE_HPP
 #define ASH_PRIMITIVE_HPP
 
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 
 namespace ash
 {
