@@ -4,10 +4,10 @@ namespace ash
 {
 	bool Event::poll()
 	{
-		Event ev;
-		if (SDL_PollEvent(&ev.ev))
+		Event event;
+		if (SDL_PollEvent(&event.ev))
 		{
-			ev.type = static_cast<EventType>(ev.ev.type);
+			event.type = static_cast<EventType>(event.ev.type);
 			return true;
 		}
 		return false;

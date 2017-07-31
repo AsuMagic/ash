@@ -6,6 +6,7 @@
 #include <ash/event/system.hpp>
 #include <ash/event/event.hpp>
 #include <ash/util/trycall.hpp>
+#include <ash/util/logger.hpp>
 
 namespace ash
 {
@@ -15,18 +16,14 @@ namespace ash
 		Event event;
 		if (SDL_PollEvent(&event.ev))
 		{
-			event.type = static_cast<EventType>(event.ev.type);
-
-			if (event.type == EventType::KeyPressed)
-				try_call(handler, KeyPressEvent{event.ev.key});
-			else if (event.type == EventType::KeyReleased)
-				try_call(handler, KeyReleaseEvent{event.ev.key});
-			else if (event.type == EventType::MouseMove)
-				try_call(handler, MouseMoveEvent{event.ev.motion});
-			else if (event.type == EventType::Quit)
-				try_call(handler, QuitEvent{});
-
-			return true;
+			switch (static_cast<EventType>(event.ev.type))
+			{
+			case EventType::KeyPressed:  try_call(handler, KeyPressEvent{event.ev.key}); break;
+			case EventType::KeyReleased: try_call(handler, KeyReleaseEvent{event.ev.key}); break;
+			case EventType::MouseMove:   try_call(handler, MouseMoveEvent{event.ev.motion}); break;
+			case EventType::Quit:		 try_call(handler, QuitEvent{}); break;
+			default:					 break;//cdebug() << "Unhandled event " << static_cast<int>(event.type);
+			};
 		}
 		return false;
 	}
