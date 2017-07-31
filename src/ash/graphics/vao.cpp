@@ -4,7 +4,7 @@ namespace ash
 {
 	void GLVAOManager::alloc(GLuint& id)
 	{
-		glGenVertexArrays(1, &id);
+		glCreateVertexArrays(1, &id);
 	}
 
 	void GLVAOManager::free(GLuint& id)
@@ -12,27 +12,21 @@ namespace ash
 		glDeleteVertexArrays(1, &id);
 	}
 
-	void VAO::bind()
-	{
-		glBindVertexArray(id);
-	}
-
 	void VAO::draw(const RenderPrimitive primitive, const std::size_t offset, const std::size_t count)
 	{
-		bind();
+		glBindVertexArray(id);
 		glDrawArrays(static_cast<GLenum>(primitive), static_cast<GLsizei>(offset), static_cast<GLsizei>(count));
 	}
 
-	void VAO::attribute(VBO& vbo, const std::size_t index, const std::size_t size)
+	void VAO::attribute(const std::size_t attr, const std::size_t components)
 	{
-		bind();
-		vbo.bind();
-		glVertexAttribPointer(static_cast<GLuint>(index), static_cast<GLsizei>(size), GL_FLOAT, GL_FALSE, 0, 0);
-		glEnableVertexAttribArray(static_cast<GLuint>(index));
+		glEnableVertexArrayAttrib(id, attr);
+		glVertexArrayAttribFormat(id, attr, components, GL_FLOAT, GL_FALSE, 0);
 	}
-
-	void VAO::unbind()
+	
+	void VAO::attribute_buffer(VBO& vbo, const std::size_t attr, const std::size_t components, const std::size_t shaderbinding)
 	{
-		glBindVertexArray(0);
+		glVertexArrayAttribBinding(id, attr, shaderbinding);
+		glVertexArrayVertexBuffer(id, shaderbinding, vbo.id, 0, components * sizeof(float));
 	}
 }

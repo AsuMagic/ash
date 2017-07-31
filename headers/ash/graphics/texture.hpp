@@ -13,23 +13,40 @@ namespace ash
 		static void alloc(GLuint& id);
 		static void free(GLuint& id);
 	};
+	
+	enum class TextureWrapping
+	{
+		Repeat = GL_REPEAT,
+		MirroredReapeat = GL_MIRRORED_REPEAT,
+		ClampToEdge = GL_CLAMP_TO_EDGE,
+		ClampToBorder = GL_CLAMP_TO_BORDER
+	};
+	
+	enum class TextureFiltering
+	{
+		Nearest = GL_NEAREST,
+		Linear = GL_LINEAR
+	};
 
-	// TODO support 1D/2D/3D textures
+	// TODO support 1D/3D textures
 	class Texture2D
 	{
 		GLResource<GLTexture2DManager> id;
 
 	public:
 		Texture2D(Image& image);
+		
+		// Set the OpenGL texture wrapping mode
+		void wrapping(const TextureWrapping mode);
 
-		// Update the texture.
-		void update();
-
-		// Bind the texture to GL_TEXTURE_2D to use by OpenGL functions
-		void bind();
-
-		// Unbind the texture from GL_TEXTURE_2D
-		void unbind();
+		// Set the OpenGL texture filtering mode
+		void filtering(const TextureFiltering mode);
+		
+		// Update the texture from an Image.
+		void update(Image& image);
+		
+		// Bind the texture in a specific texture unit
+		void enable(const std::size_t unit = 0);
 	};
 }
 

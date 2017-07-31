@@ -5,7 +5,7 @@ namespace ash
 {
 	void GLVBOManager::alloc(GLuint& id)
 	{
-		glGenBuffers(1, &id);
+		glCreateBuffers(1, &id);
 	}
 
 	void GLVBOManager::free(GLuint& id)
@@ -15,8 +15,7 @@ namespace ash
 
 	void VBO::buffer_realloc()
 	{
-		bind();
-		glBufferData(GL_ARRAY_BUFFER, static_cast<GLsizeiptr>(_values.size() * sizeof(float)), _values.data(), static_cast<GLenum>(_update_freq));
+		glNamedBufferData(id, static_cast<GLsizeiptr>(_values.size() * sizeof(float)), _values.data(), static_cast<GLenum>(_update_freq));
 		_buffer_size = _values.size();
 	}
 
@@ -34,20 +33,9 @@ namespace ash
 		}
 		else
 		{
-			bind();
-			glBufferSubData(GL_ARRAY_BUFFER, static_cast<GLsizeiptr>(offset), static_cast<GLsizeiptr>(size), &_values.data()[offset]);
+			glNamedBufferSubData(id, static_cast<GLsizeiptr>(offset), static_cast<GLsizeiptr>(size), &_values.data()[offset]);
 			// Do not update _buffer_size, it may only be changed through buffer_realloc().
 		}
-	}
-
-	void VBO::bind()
-	{
-		glBindBuffer(GL_ARRAY_BUFFER, id);
-	}
-
-	void VBO::unbind()
-	{
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
 	void VBO::resize(const std::size_t new_size)
@@ -60,9 +48,8 @@ namespace ash
 		_values.reserve(reserved);
 	}
 
-	void VBO::update(VAO& vao)
+	void VBO::update()
 	{
-		vao.bind();
 		buffer_update_range(0, _values.size());
 	}
 
@@ -74,5 +61,10 @@ namespace ash
 	float& VBO::at(const std::size_t at)
 	{
 		return _values.at(at);
+	}
+	
+	std::size_t VBO::size() const
+	{
+		return _buffer_size;
 	}
 }

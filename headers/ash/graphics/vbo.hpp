@@ -47,12 +47,6 @@ namespace ash
 	public:
 		GLResource<GLVBOManager> id;
 
-		// Bind the VBO to GL_ARRAY_BUFFER to use by OpenGL functions
-		void bind();
-
-		// Unbind the VBO from GL_ARRAY_BUFFER
-		void unbind();
-
 		// Resize the vertices vector. *Doesn't* affect the VBO, update() is still necessary to refresh the contents.
 		void resize(const std::size_t new_size);
 
@@ -70,14 +64,15 @@ namespace ash
 		}
 
 		// Update the VBO. Currently updates the whole VBO with buffer_update_range rather inefficiently.
-		// Takes a VAO as a parameter which will be bind automatically.
-		void update(VAO& vao);
+		void update();
 
 		// Non bound-checked access
 		float& operator[](const std::size_t at);
 
 		// Bound-checked access
 		float& at(const std::size_t at);
+		
+		std::size_t size() const;
 	};
 }
 
