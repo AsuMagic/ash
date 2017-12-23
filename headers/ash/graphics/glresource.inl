@@ -39,8 +39,11 @@ namespace ash
 	template<class Manager>
 	GLResource<Manager>::~GLResource()
 	{
-		Manager::free(id);
-		cdebug() << "Freed GL resource, ID #" << id << " with " << pretty_name<Manager>();
+		if (id)
+		{
+			Manager::free(id);
+			cdebug() << "Freed GL resource, ID #" << id << " with " << pretty_name<Manager>();
+		}
 	}
 
 	template<class Manager>

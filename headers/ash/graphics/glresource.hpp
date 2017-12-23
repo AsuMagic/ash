@@ -5,6 +5,11 @@
 
 namespace ash
 {
+	// RAII class to handle an OpenGL resource.
+	// The manager should have 2 static functions:
+	// - MyManager::alloc(GLuint& id, <optional arguments>)
+	// - MyManager::free(GLuint& id)
+	// This assumes alloc's id parameter is != 0 once the call is done.
 	template<class Manager>
 	struct GLResource
 	{
